@@ -10,11 +10,13 @@ import Foundation
 class MenuViewModel: ObservableObject{
     
     @Published var itemList: Item?
+    @Published var loaded: Bool = false
     let service = AkakceService()
     
     init(){
         fetchItems()
     }
+    
     func fetchItems(){
         service.fetchItem { [weak self] results in
             guard let strongSelf = self else { return }
@@ -23,16 +25,19 @@ class MenuViewModel: ObservableObject{
             case .success(let items):
                 DispatchQueue.main.async {
                     strongSelf.itemList = items
+                    strongSelf.loaded = true
                 }
         
             case .failure(let error):
                 print(error.localizedDescription)
+                strongSelf.loaded = true
                 break
             }
         }
     }
     
     func fetchNextPage(nextPageURL: String){
+        loaded = false
         service.fetchItem(url: nextPageURL) { [weak self] results in
             guard let strongSelf = self else { return }
             
@@ -51,9 +56,11 @@ class MenuViewModel: ObservableObject{
                                 strongSelf.itemList = Item(result: AkakceResult(nextURL: items.result.nextURL,
                                                                           horizontalProducts: updatedHorizontalProducts,
                                                                           products: updatedProducts))
+                                strongSelf.loaded = true
                             }
                         }
             case .failure(let error):
+                strongSelf.loaded = true
                 print(error.localizedDescription)
                 break
             }

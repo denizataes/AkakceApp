@@ -18,20 +18,14 @@ struct MenuItemView: View {
                 .scaledToFit()
                 .frame(width: 128, height: 128)
             
+            
             Text(product.name)
                 .foregroundColor(Color(hex: "237EC4"))
                 .font(.caption2)
                 .padding(.bottom, 2)
             
             
-            HStack(spacing: 2){
-                Text("\( String(format: "%.2f", product.price))")
-                    .font(.system(size: 18))
-                    .fontWeight(.bold)
-                Text(",00 TL")
-                    .font(.system(size: 9))
-                
-            }
+            PriceView(price: product.price, fontSize: 18)
             
             HStack{
                 Text("\(product.countOfPrices ?? 0) satıcı")
@@ -45,14 +39,18 @@ struct MenuItemView: View {
             
             Text("\(product.followCount ?? 0)+ takip")
                 .font(.system(size: 10))
-
-            
         }
+        .frame(width: 140, height: 250)
+        .padding()
+        .background(.white)
+        .cornerRadius(3)
+        .shadow(color: .blue.opacity(0.2), radius: 1)
+        
     }
 }
 
 struct MenuItemView_Previews: PreviewProvider {
     static var previews: some View {
-        MenuItemView(product: Product(code: 1, imageURL: "yok", name: "iphone", dropRatio: 12, price: 12, countOfPrices: 12, followCount: 12))
+        MenuView()
     }
 }

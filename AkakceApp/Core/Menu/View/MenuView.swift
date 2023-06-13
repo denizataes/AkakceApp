@@ -11,45 +11,87 @@ import Kingfisher
 struct MenuView: View {
     @ObservedObject var viewModel = MenuViewModel()
     @State private var currentIndex: Int? = nil
+    @State private var currentIndexHorizontal: Int? = 1
+    
+    
+    let columns: [GridItem] = [
+        GridItem(.flexible(), spacing: 10),
+        GridItem(.flexible(), spacing: 10)
+    ]
     
     var body: some View {
+        
         ScrollView {
-            ScrollViewReader { scrollViewProxy in
-                LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
-                    ForEach(viewModel.itemList?.result.products ?? []) { product in
-                        VStack {
-                            MenuItemView(product: product)
+            VStack {
+            
+                TabView{
+                    ForEach(viewModel.itemList?.result.horizontalProducts ?? []) { product in
+                        NavigationLink {
+                            DetailView(url: "\(Config.detailUrl)\(product.code)")
+                        } label: {
+                            MenuHorizontalItemView(product: product)
+                                .foregroundColor(.black)
                         }
-                        .frame(maxWidth: .infinity)
-                        .aspectRatio(contentMode: .fit)
+                    }
+                }
+                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
+                .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
+                .frame(height: 200)
+                .onAppear {
+                    UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(Color(hex: "237EC4"))
+                }
+                .id(UUID())
+                
+                
+                
+                ZStack {
+                    Color.gray.opacity(0.08)
+                        .ignoresSafeArea()
+                    
+                    ScrollViewReader { scrollViewProxy in
+                        LazyVGrid(columns: columns, spacing: 10) {
+                            ForEach(viewModel.itemList?.result.products ?? []) { product in
+                                VStack {
+                                    NavigationLink(destination: DetailView(url: "\(Config.detailUrl)\(product.code)")) {
+                                        MenuItemView(product: product)
+                                    }
+                                }
+                                .foregroundColor(.black)
+                                .id(product.id) // Her ürüne benzersiz bir ID atayın
+                                .onAppear {
+                                    // Son eleman göründüğünde currentIndex'i güncelleyin
+                                    if product.code == viewModel.itemList?.result.products.last?.code {
+                                        currentIndex = product.code
+                                    }
+                                }
+                            }
+                        }
                         .padding()
-                        .cornerRadius(8)
-                        .id(product.id) // Her ürüne benzersiz bir ID atayın
-                        .onAppear {
-                            // Son eleman göründüğünde currentIndex'i güncelleyin
-                            if product.code == viewModel.itemList?.result.products.last?.code {
-                                currentIndex = product.code
+                        .onChange(of: currentIndex) { newValue in
+                            if let currentIndex = newValue {
+                                withAnimation {
+                                    scrollViewProxy.scrollTo(currentIndex, anchor: .bottom)
+                                    if let url = viewModel.itemList?.result.nextURL,
+                                       currentIndex == viewModel.itemList?.result.products.last?.code {
+                                        viewModel.fetchNextPage(nextPageURL: url)
+                                    }
+                                }
                             }
                         }
                     }
                 }
-                .padding()
-                .onChange(of: currentIndex) { newValue in
-                    if let currentIndex = newValue {
-                        withAnimation {
-                            scrollViewProxy.scrollTo(currentIndex, anchor: .bottom)
-                            if let url = viewModel.itemList?.result.nextURL,
-                               currentIndex == viewModel.itemList?.result.products.last?.code {
-                                viewModel.fetchNextPage(nextPageURL: url)
-                            }
-                        }
-                    }
-                }
-
             }
         }
+        .overlay(content: {
+            if !viewModel.loaded {
+                CustomLoadingView()
+            }
+        })
+        .navigationBarTitle("Akakçe'm🔥")
     }
 }
+
+
 struct MenuView_Previews: PreviewProvider {
     static var previews: some View {
         MenuView()
