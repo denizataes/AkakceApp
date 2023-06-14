@@ -9,7 +9,7 @@ import SwiftUI
 import Kingfisher
 
 struct MenuVerticalItemView: View {
-    
+    @Environment(\.colorScheme) var colorScheme
     var product: Product
     var body: some View {
         VStack(alignment: .leading){
@@ -42,7 +42,7 @@ struct MenuVerticalItemView: View {
         }
         .frame(width: 140, height: 250)
         .padding()
-        .background(.white)
+        .background(colorScheme == .dark ?  .black : .white)
         .cornerRadius(3)
         .shadow(color: .blue.opacity(0.2), radius: 1)
         

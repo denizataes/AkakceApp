@@ -56,6 +56,7 @@ struct DetailView: View {
                 Divider()
                 
                 Text("Kapasite seçenekleri:")
+                    .foregroundColor(.primary)
                     .font(.caption2)
                 
                 if let storageItems = viewModel.detail?.result.storageOptions {
@@ -75,7 +76,7 @@ struct DetailView: View {
                 
                 PriceView(price: Double(viewModel.detail?.result.price ?? 0), fontSize: 26)
                 
-                Text((viewModel.detail?.result.freeShipping ?? true ? "Ücretsiz" : "Ücretli") + "Kargo")
+                Text((viewModel.detail?.result.freeShipping ?? true ? "Ücretsiz" : "Ücretli") + " Kargo")
                     .foregroundColor(Color(.systemGreen))
                     .font(.system(size: 12))
                     .font(.headline)

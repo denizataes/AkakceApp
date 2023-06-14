@@ -11,6 +11,8 @@ import Kingfisher
 struct MenuView: View {
     @ObservedObject var viewModel = MenuViewModel()
     @State private var currentIndex: Int? = nil
+    @Environment(\.colorScheme) var colorScheme
+
     
     let columns: [GridItem] = [
         GridItem(.flexible(), spacing: 10),
@@ -87,7 +89,7 @@ struct MenuView: View {
                     DetailView(url: "\(Config.detailUrl)\(product.code)")
                 } label: {
                     MenuHorizontalItemView(product: product)
-                        .foregroundColor(.black)
+                        .foregroundColor(.primary)
                 }
             }
         }
@@ -104,9 +106,12 @@ struct MenuView: View {
     // MARK: VerticalView
     var verticalView: some View{
         ZStack {
-            Color.gray.opacity(0.08)
-                .ignoresSafeArea()
             
+            if colorScheme != .dark {
+                Color.gray.opacity(0.08)
+                    .ignoresSafeArea()
+            }
+          
             ScrollViewReader { scrollViewProxy in
                 LazyVGrid(columns: columns, spacing: 10) {
                     ForEach(viewModel.itemList?.result.products ?? []) { product in
@@ -115,7 +120,7 @@ struct MenuView: View {
                                 MenuVerticalItemView(product: product)
                             }
                         }
-                        .foregroundColor(.black)
+                        .foregroundColor(.primary)
                         .id(product.id) // Her ürüne benzersiz bir ID atayın
                         .onAppear {
                             // Son eleman göründüğünde currentIndex'i güncelleyin

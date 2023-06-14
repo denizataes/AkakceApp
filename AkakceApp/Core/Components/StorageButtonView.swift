@@ -16,11 +16,11 @@ struct StorageButtonView: View {
         } label: {
             Text("\(storage)")
                 .font(.caption2)
-                .foregroundColor(.black)
+                .foregroundColor(.primary)
                 .padding()
                 .overlay(
                     RoundedRectangle(cornerRadius: 4)
-                        .stroke(Color.black, lineWidth: 1)
+                        .stroke(Color.primary, lineWidth: 1)
                 )
                 .cornerRadius(4)
         }

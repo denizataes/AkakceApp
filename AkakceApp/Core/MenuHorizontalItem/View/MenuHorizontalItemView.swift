@@ -41,9 +41,11 @@ struct MenuHorizontalItemView: View {
                         .frame(width: 8, height: 11)
                 }
                 .padding(.bottom,4)
+                .foregroundColor(.primary)
                 
                 Text("\(product.followCount ?? 0)+ takip")
                     .font(.system(size: 10))
+                    .foregroundColor(.primary)
                 
                 Spacer()
                 
@@ -51,6 +53,7 @@ struct MenuHorizontalItemView: View {
             Spacer()
         }
         .padding()
+        
         
     }
 }

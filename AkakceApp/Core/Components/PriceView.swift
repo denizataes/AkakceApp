@@ -19,5 +19,6 @@ struct PriceView: View {
             Text(",00 TL")
                 .font(.system(size: 9))
         }
+        .foregroundColor(.primary)
     }
 }
