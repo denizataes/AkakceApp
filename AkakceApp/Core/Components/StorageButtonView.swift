@@ -7,11 +7,12 @@
 
 import SwiftUI
 
+///Uses for the storage buttons
 struct StorageButtonView: View {
     var storage: String
     var body: some View {
         Button {
-            // Butona tıklanınca yapılacak işlem
+            
         } label: {
             Text("\(storage)")
                 .font(.caption2)

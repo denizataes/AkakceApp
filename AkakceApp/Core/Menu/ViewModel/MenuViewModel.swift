@@ -9,16 +9,25 @@ import Foundation
 
 class MenuViewModel: ObservableObject{
     
+    // MARK: Properties
     @Published var itemList: Item?
     @Published var loaded: Bool = false
+    @Published var showError: Bool = false
+    @Published var errorMessage: String = ""
+    
     let service = AkakceService()
     
     init(){
         fetchItems()
     }
     
+    //MARK: Functions
+    ///This method works when the main screen is loaded and pulls data from the API.
     func fetchItems(){
-        service.fetchItem { [weak self] results in
+        
+        let url = URL(string: Config.apiUrl)!
+        service.fetchData(for: Item.self, from: url) {
+            [weak self] results in
             guard let strongSelf = self else { return }
             
             switch(results){
@@ -27,18 +36,26 @@ class MenuViewModel: ObservableObject{
                     strongSelf.itemList = items
                     strongSelf.loaded = true
                 }
+                break
         
             case .failure(let error):
-                print(error.localizedDescription)
+                strongSelf.showError = true;
+                strongSelf.errorMessage = "Hata oluştu. \nHata Detayı:  \(error.localizedDescription)"
                 strongSelf.loaded = true
                 break
             }
         }
     }
     
+    ///This method works when the last item appears on the screen and pulls data for the next page.
     func fetchNextPage(nextPageURL: String){
         loaded = false
-        service.fetchItem(url: nextPageURL) { [weak self] results in
+        
+        if nextPageURL.isEmpty{
+            return
+        }
+            
+        service.fetchData(for: Item.self, from: URL(string: nextPageURL)!) {[weak self] results in
             guard let strongSelf = self else { return }
             
             switch(results){
@@ -59,10 +76,11 @@ class MenuViewModel: ObservableObject{
                                 strongSelf.loaded = true
                             }
                         }
-            case .failure(let error):
-                strongSelf.loaded = true
-                print(error.localizedDescription)
                 break
+            case .failure(let error):
+                strongSelf.showError = true;
+                strongSelf.errorMessage = "Hata oluştu. \nHata Detayı:  \(error.localizedDescription)"
+                strongSelf.loaded = true
             }
         }
         

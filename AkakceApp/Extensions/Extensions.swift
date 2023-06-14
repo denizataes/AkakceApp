@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 
 extension Color {
+    ///Extension for color to use with hex code
     init(hex: String) {
         let scanner = Scanner(string: hex)
         _ = scanner.scanString("#")

@@ -54,9 +54,3 @@ struct MenuHorizontalItemView: View {
         
     }
 }
-
-//struct MenuHorizontalItemView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        MenuHorizontalItemView()
-//    }
-//}

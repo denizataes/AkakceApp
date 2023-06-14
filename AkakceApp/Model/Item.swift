@@ -5,7 +5,7 @@ struct Item: Codable {
     var result: AkakceResult
 }
 
-// MARK: - Result
+// MARK: - AkakceResult
 struct AkakceResult: Codable {
     var nextURL: String?
     let horizontalProducts: [Product]?

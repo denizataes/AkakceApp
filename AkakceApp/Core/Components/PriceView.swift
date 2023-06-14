@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+///Uses for the price labels
 struct PriceView: View {
     var price: Double
     var fontSize: CGFloat
@@ -20,10 +21,3 @@ struct PriceView: View {
         }
     }
 }
-
-//
-//struct PriceView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        PriceView(price: 20.953)
-//    }
-//}

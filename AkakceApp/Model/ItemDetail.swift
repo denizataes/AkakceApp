@@ -5,7 +5,7 @@ struct ItemDetail: Codable {
     let result: ResultDetail
 }
 
-// MARK: - Result
+// MARK: - ResultDetail
 struct ResultDetail: Codable, Identifiable {
     let id = UUID()
     let mkName, productName, badge: String

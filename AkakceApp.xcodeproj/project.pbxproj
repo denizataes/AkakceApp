@@ -18,7 +18,7 @@
 		A099DF4D2A37A1A200274D99 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A099DF4C2A37A1A200274D99 /* MenuView.swift */; };
 		A099DF4F2A37A1BA00274D99 /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A099DF4E2A37A1BA00274D99 /* MenuViewModel.swift */; };
 		A099DF522A37A5E700274D99 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = A099DF512A37A5E700274D99 /* Kingfisher */; };
-		A099DF582A37A82900274D99 /* MenuItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A099DF572A37A82900274D99 /* MenuItemView.swift */; };
+		A099DF582A37A82900274D99 /* MenuVerticalItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A099DF572A37A82900274D99 /* MenuVerticalItemView.swift */; };
 		A099DF5A2A37B7EF00274D99 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A099DF592A37B7EF00274D99 /* Extensions.swift */; };
 		A099DF5C2A38B72F00274D99 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A099DF5B2A38B72F00274D99 /* DetailViewModel.swift */; };
 		A099DF5E2A38B7C700274D99 /* ItemDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = A099DF5D2A38B7C700274D99 /* ItemDetail.swift */; };
@@ -26,6 +26,7 @@
 		A099DF632A38C20800274D99 /* PriceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A099DF622A38C20800274D99 /* PriceView.swift */; };
 		A099DF672A38CBEE00274D99 /* MenuHorizontalItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A099DF662A38CBEE00274D99 /* MenuHorizontalItemView.swift */; };
 		A099DF692A391CA300274D99 /* CustomLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A099DF682A391CA300274D99 /* CustomLoadingView.swift */; };
+		A099DF6D2A3A3C5300274D99 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A099DF6C2A3A3C5300274D99 /* MainTabView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,7 +41,7 @@
 		A099DF492A37A18600274D99 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		A099DF4C2A37A1A200274D99 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		A099DF4E2A37A1BA00274D99 /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
-		A099DF572A37A82900274D99 /* MenuItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemView.swift; sourceTree = "<group>"; };
+		A099DF572A37A82900274D99 /* MenuVerticalItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuVerticalItemView.swift; sourceTree = "<group>"; };
 		A099DF592A37B7EF00274D99 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		A099DF5B2A38B72F00274D99 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		A099DF5D2A38B7C700274D99 /* ItemDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetail.swift; sourceTree = "<group>"; };
@@ -48,6 +49,7 @@
 		A099DF622A38C20800274D99 /* PriceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceView.swift; sourceTree = "<group>"; };
 		A099DF662A38CBEE00274D99 /* MenuHorizontalItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuHorizontalItemView.swift; sourceTree = "<group>"; };
 		A099DF682A391CA300274D99 /* CustomLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLoadingView.swift; sourceTree = "<group>"; };
+		A099DF6C2A3A3C5300274D99 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,9 +115,10 @@
 		A099DF362A379F2700274D99 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				A099DF6A2A3A3C4800274D99 /* Tab */,
 				A099DF642A38CBD400274D99 /* MenuHorizontalItem */,
 				A099DF5F2A38C0DD00274D99 /* Components */,
-				A099DF532A37A81200274D99 /* MenuItem */,
+				A099DF532A37A81200274D99 /* MenuVerticalItem */,
 				A099DF422A37A16200274D99 /* Detail */,
 				A099DF412A37A15D00274D99 /* Menu */,
 			);
@@ -197,18 +200,18 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		A099DF532A37A81200274D99 /* MenuItem */ = {
+		A099DF532A37A81200274D99 /* MenuVerticalItem */ = {
 			isa = PBXGroup;
 			children = (
 				A099DF542A37A81500274D99 /* View */,
 			);
-			path = MenuItem;
+			path = MenuVerticalItem;
 			sourceTree = "<group>";
 		};
 		A099DF542A37A81500274D99 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				A099DF572A37A82900274D99 /* MenuItemView.swift */,
+				A099DF572A37A82900274D99 /* MenuVerticalItemView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -235,6 +238,22 @@
 			isa = PBXGroup;
 			children = (
 				A099DF662A38CBEE00274D99 /* MenuHorizontalItemView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A099DF6A2A3A3C4800274D99 /* Tab */ = {
+			isa = PBXGroup;
+			children = (
+				A099DF6B2A3A3C4B00274D99 /* View */,
+			);
+			path = Tab;
+			sourceTree = "<group>";
+		};
+		A099DF6B2A3A3C4B00274D99 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A099DF6C2A3A3C5300274D99 /* MainTabView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -326,8 +345,9 @@
 				A099DF5A2A37B7EF00274D99 /* Extensions.swift in Sources */,
 				A099DF632A38C20800274D99 /* PriceView.swift in Sources */,
 				A099DF282A379E8600274D99 /* AkakceAppApp.swift in Sources */,
+				A099DF6D2A3A3C5300274D99 /* MainTabView.swift in Sources */,
 				A099DF3C2A37A00900274D99 /* AkakceService.swift in Sources */,
-				A099DF582A37A82900274D99 /* MenuItemView.swift in Sources */,
+				A099DF582A37A82900274D99 /* MenuVerticalItemView.swift in Sources */,
 				A099DF672A38CBEE00274D99 /* MenuHorizontalItemView.swift in Sources */,
 				A099DF5C2A38B72F00274D99 /* DetailViewModel.swift in Sources */,
 				A099DF4F2A37A1BA00274D99 /* MenuViewModel.swift in Sources */,

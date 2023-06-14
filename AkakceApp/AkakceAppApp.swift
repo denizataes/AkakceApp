@@ -12,7 +12,7 @@ struct AkakceAppApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationView{
-                MenuView()
+                MainTabView()
             }
         }
     }

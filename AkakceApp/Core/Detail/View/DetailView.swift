@@ -90,6 +90,7 @@ struct DetailView: View {
         
         }
         .padding()
+        .alert(viewModel.errorMessage, isPresented: $viewModel.showError) {}
         
     }
 }

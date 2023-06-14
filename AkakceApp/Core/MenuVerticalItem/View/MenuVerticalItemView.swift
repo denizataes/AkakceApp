@@ -8,7 +8,7 @@
 import SwiftUI
 import Kingfisher
 
-struct MenuItemView: View {
+struct MenuVerticalItemView: View {
     
     var product: Product
     var body: some View {
@@ -49,7 +49,7 @@ struct MenuItemView: View {
     }
 }
 
-struct MenuItemView_Previews: PreviewProvider {
+struct MenuVerticalItemView_Previews: PreviewProvider {
     static var previews: some View {
         MenuView()
     }
