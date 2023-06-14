@@ -1,4 +1,4 @@
-# Akakce App with SwiftUI 🔵
+# Akakce App with SwiftUI 🔵⚪️
 
 ## Implemented Using 🔥
 
